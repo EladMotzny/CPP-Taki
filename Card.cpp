@@ -1,6 +1,6 @@
 #include "Card.h"
 //#define RANDOM
-#define WINDOWS
+//#define WINDOWS
 #ifdef WINDOWS
 #include <windows.h>
 #endif
