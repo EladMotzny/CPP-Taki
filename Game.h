@@ -16,7 +16,7 @@ private:
 public:
 	//public members and functions
 	Game(){}
-	Game(int numberOfPlayers, string nameArray [], int numberOfCards);
+	Game(int numberOfPlayers, vector<string> nameArray, int numberOfCards);
 	void start();
 };
 #endif
