@@ -12,6 +12,7 @@ Game::Game(vector<string> nameArray, int numberOfCards, Card currentCard, Player
     for (int i=0; i<nameArray.size(); i++) {
         Player* p = new Player(nameArray[i], numberOfCards);
         this->playersDeque.push_back(*p);
+        cout << "size: " << this->playersDeque.size() << endl;
     }
     this->currentCard = currentCard;
     this->currentPlayer =  currentPlayer;
@@ -19,26 +20,29 @@ Game::Game(vector<string> nameArray, int numberOfCards, Card currentCard, Player
 
 void Game::start(){
     deque <Player> playersDeque;
-	int numberOfCards;
     int numberOfPlayers;
-    vector<string> nameArray;
-    Card currentCard = Card::generate_card();
-	Player currentPlayer;
-
+    
     cout << "How many players?" << endl;
     cin >> numberOfPlayers;
 
     cout << "How many cards?" << endl;
-    cin >> numberOfCards;
+    cin >> this->numberOfCards;
 
     for(int i=1; i<=numberOfPlayers; i++){
         string currentName;
         cout << "Player number " << i << " name?"<< endl;
         cin >> currentName;
-        nameArray.push_back(currentName);
+        Player* p = new Player(currentName, numberOfCards);
+        this->playersDeque.push_back(*p);
+        cout << "size: " << this->playersDeque.size() << endl;
     }
-    Game game = Game(nameArray, numberOfCards, currentCard, currentPlayer);
+    this->currentCard = Card::generate_card();
+    this->currentPlayer =  this->playersDeque.front();
+    this->playersDeque.pop_front();
+    this->playersDeque.push_back(this->currentPlayer);
+
     bool winner = false;
+    cout << this->clockWise << " :" << this->currentPlayer.getName() << " " << this->playersDeque.size();
     this->winner();
     // while(!winner){
 
@@ -57,22 +61,13 @@ void gamePrintForPlayer(Game game){
 }
 
 bool Game::winner(){
-    // deque<Player> :: iterator it;
-    // for (it = this->playersDeque.begin(); it != this->playersDeque.end(); it++){
-    //     cout  << it->getName();
-        // if(*it->getPlayerCard.size() == 0)
-    //         return true;
-    // }
-    // return false;
-
-    // for(auto const& i: this->playersDeque){
-    //     if(i.getPlayerCard.size() == 0)
-    //         return true;
-    // }
-    // return false;
-    // for(int i=0; i<this->playersDeque.size(); i++){
-    //     if(this->playersDeque[i].getPlayerCard.size()== 0)
-    //     return  true;
-    // }
+    cout << "started winner" << endl;
+    deque<Player> :: iterator it = this->playersDeque.begin();
+    it->toString();
+    for (; it != this->playersDeque.end(); it++){
+        cout  << it->getName();
+        if(it->getPlayerCard().size() == 0)
+            return true;
+    }
     return false;
     }
