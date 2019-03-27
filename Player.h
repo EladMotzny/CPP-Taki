@@ -19,10 +19,13 @@ Player();//empty constructor
 Player(string name, int numOfCards);//regular constractor
 Player(const Player& pl);//copy constractor
 ~Player();//destructor
-bool play(const Card& c);//the play function
+bool play(const Card& c);//the play function, true if put a card and false if took a card from deck
 string getName();
 int getNumCards();
 vector<Card> getPlayerCard();
+void toString(){
+	cout << "name: " << this->name << endl;
+}
 
 };
 #endif
