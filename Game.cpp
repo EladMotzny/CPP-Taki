@@ -44,19 +44,26 @@ void Game::start(){
     bool winner = false;
     cout << this->clockWise << " :" << this->currentPlayer.getName() << " " << this->playersDeque.size();
     this->winner();
-    // while(!winner){
 
-    // }
+    while(!winner){
+        int cardIndex;
+        gamePrintForPlayer();
+        cin >> cardIndex;
+        //need to check validity of user pick
+
+
+        winner = this->winner();
+    }
     
 	
 }
 
-void gamePrintForPlayer(Game game){
-    cout << "Current: " << game.currentCard << endl;
-    cout << game.currentPlayer.getName() << ", your turn -" << endl;
+void Game::gamePrintForPlayer(){
+    cout << "Current: " << this->currentCard << endl;
+    cout << this->currentPlayer.getName() << ", your turn -" << endl;
     cout << "Your cards: ";
-    for(int i=1; i<game.currentPlayer.getPlayerCard().size(); i++){
-        cout << "(" << i << ")" << game.currentPlayer.getPlayerCard()[i] << "  ";
+    for(int i=1; i<this->currentPlayer.getPlayerCard().size(); i++){
+        cout << "(" << i << ")" << this->currentPlayer.getPlayerCard()[i] << "  ";
     }
 }
 

@@ -22,6 +22,7 @@ public:
 	void start();
 	void changeDirection();	//poland
 	bool winner();
+	void gamePrintForPlayer();
 	
 };
 #endif
