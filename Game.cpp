@@ -34,7 +34,7 @@ void Game::start(){
         cin >> currentName;
         Player* p = new Player(currentName, numberOfCards);
         this->playersDeque.push_back(*p);
-        cout << "size: " << this->playersDeque.size() << endl;
+        // cout << "size: " << this->playersDeque.size() << endl;
     }
     this->currentCard = Card::generate_card();
     this->currentPlayer =  this->playersDeque.front();
@@ -50,7 +50,7 @@ void Game::start(){
         gamePrintForPlayer();
         cin >> cardIndex;
         //need to check validity of user pick
-
+        
 
         winner = this->winner();
     }
@@ -65,14 +65,15 @@ void Game::gamePrintForPlayer(){
     for(int i=1; i<this->currentPlayer.getPlayerCard().size(); i++){
         cout << "(" << i << ")" << this->currentPlayer.getPlayerCard()[i] << "  ";
     }
+    cout << " " << endl;
 }
 
 bool Game::winner(){
-    cout << "started winner" << endl;
+    // cout << "started winner" << endl;
     deque<Player> :: iterator it = this->playersDeque.begin();
-    it->toString();
+    // it->toString();
     for (; it != this->playersDeque.end(); it++){
-        cout  << it->getName();
+        // cout  << it->getName();
         if(it->getPlayerCard().size() == 0)
             return true;
     }
