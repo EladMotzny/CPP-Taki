@@ -20,7 +20,9 @@ Player(string name, int numOfCards);//regular constractor
 Player(const Player& pl);//copy constractor
 ~Player();//destructor
 bool play(const Card& c);//the play function
-
+string getName();
+int getNumCards();
+vector<Card> getPlayerCard();
 
 };
 #endif
