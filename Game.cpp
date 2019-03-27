@@ -7,11 +7,13 @@
 using namespace std;
 
 
-Game::Game(int numberOfPlayers, vector<string> nameArray, int numberOfCards){
+Game::Game(int numberOfPlayers, vector<string> nameArray, int numberOfCards, Card currentCard, Player currentPlayer){
     for (int i=0; i<nameArray.size(); i++) {
         Player* p = new Player(nameArray[i], numberOfCards);
         this->playersDeque.push_back(*p);
     }
+    this->currentCard = currentCard;
+    this->currentPlayer =  currentPlayer;
 }
 
 void Game::start(){
@@ -34,7 +36,7 @@ void Game::start(){
         cin >> currentName;
         nameArray.push_back(currentName);
     }
-    Game(numberOfPlayers, nameArray, numberOfCards);
+    Game(numberOfPlayers, nameArray, numberOfCards, currentCard, currentPlayer);
 	// bool clockWise = true
 }
 
