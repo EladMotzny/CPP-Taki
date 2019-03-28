@@ -43,27 +43,34 @@ void Game::start(){
 
     bool winner = false;
     cout << this->clockWise << " :" << this->currentPlayer.getName() << " " << this->playersDeque.size();
-    this->winner();
+    
 
-    while(!winner){
+    while(true){
         int cardIndex;
         gamePrintForPlayer();
-        cin >> cardIndex;
-        //need to check validity of user pick
         
-        // this->currentCard = this->currentPlayergetPlayerCard[cardIndex];
+        //need to check validity of user pick
+        cin >> cardIndex; //here just to stall the infinite loop
+        // this->currentCard = this->currentPlayer.getPlayerCard()[cardIndex];
+        if(this->currentPlayer.play(this->currentCard)){
+            if(this->winner()){
+                cout << this->currentPlayer.getName() << "  wins!" << endl;
+                return;
+            }
+            
+            if(this->currentCard.get_sign() == sign::PLUS){
+                //Player gets the WHOLE "his turn again" shanbang in recursion
+                this->plusCardMove();
+            }
 
+            if(this->currentCard.get_sign() == sign::STOP){}
+
+            if(this->currentCard.get_sign() == sign::CD){} 
+        }
         this->currentPlayer = this->playersDeque.front();
         this->playersDeque.pop_front();
-        this->playersDeque.push_back(this->currentPlayer);
-
-        
-        
-
-        winner = this->winner();
+        this->playersDeque.push_back(this->currentPlayer);   
     }
-    
-	
 }
 
 void Game::gamePrintForPlayer(){
@@ -86,4 +93,22 @@ bool Game::winner(){
             return true;
     }
     return false;
-    }
+}
+
+
+void Game::plusCardMove(){
+    if(this->currentPlayer.play(this->currentCard)){
+                    if(this->winner()){
+                        cout << this->currentPlayer.getName() << "  wins!" << endl;
+                        return;
+                    }
+                    
+                    if(this->currentCard.get_sign() == sign::PLUS){
+                        this->plusCardMove();
+                    }
+
+                    if(this->currentCard.get_sign() == sign::STOP){}
+
+                    if(this->currentCard.get_sign() == sign::CD){}
+                }
+}

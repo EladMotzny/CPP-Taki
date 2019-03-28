@@ -1,8 +1,10 @@
 #include "Player.h"
 
 Player::Player(){//empty constructor
+    vector <Card> pc;
     this->name = "Jahlawit";
     this->num_cards = 0;
+    this->playerCards = pc;
 }
 
 Player::Player(string name, int numOfCards){//regular constructor
