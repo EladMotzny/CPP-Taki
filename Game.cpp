@@ -51,6 +51,14 @@ void Game::start(){
         cin >> cardIndex;
         //need to check validity of user pick
         
+        // this->currentCard = this->currentPlayergetPlayerCard[cardIndex];
+
+        this->currentPlayer = this->playersDeque.front();
+        this->playersDeque.pop_front();
+        this->playersDeque.push_back(this->currentPlayer);
+
+        
+        
 
         winner = this->winner();
     }
@@ -73,7 +81,7 @@ bool Game::winner(){
     deque<Player> :: iterator it = this->playersDeque.begin();
     // it->toString();
     for (; it != this->playersDeque.end(); it++){
-        // cout  << it->getName();
+        cout  << "winnerloop " << endl; //it->getName();
         if(it->getPlayerCard().size() == 0)
             return true;
     }
