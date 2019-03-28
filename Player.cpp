@@ -8,7 +8,9 @@ Player::Player(){//empty constructor
 Player::Player(string name, int numOfCards){//regular constructor
     this->name = name;
     this->num_cards = numOfCards;
-
+    for(int i = 0; i <= numOfCards; i++){
+        this->playerCards.push_back(Card::generate_card());
+    }
 }
 
 Player::Player(const Player& pl){// copy constructor
@@ -22,6 +24,7 @@ Player::Player(const Player& pl){// copy constructor
 Player::~Player(){};//destructor
 
 bool Player::play(const Card& c){//The play function
+    //check if card is in range and is legal
     return true;
 }//NEED TO CHANGE
 
