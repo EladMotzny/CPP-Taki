@@ -2,7 +2,7 @@
 
 Player::Player(){//empty constructor
     vector <Card> pc;
-    this->name = "Jahlawit";
+    this->name = "";
     this->num_cards = 0;
     this->playerCards = pc;
 }
@@ -33,7 +33,9 @@ bool Player::play(Card& c){//The play function
         cin >> cardToPlay;
         //check if card is in range
         if(0 == cardToPlay || cardToPlay > this->getPlayerCard().size()){
-            this->playerCards.push_back(Card::generate_card());//draw a card
+            Card ca = Card::generate_card();
+            //this->playerCards.push_back(ca);//draw a card
+            this->getPlayerCard().push_back(ca);
             endFlag = true;
             playOrDraw = false;
         }
@@ -42,8 +44,8 @@ bool Player::play(Card& c){//The play function
             if(c.is_legal(this->playerCards.at(cardToPlay))){//move is legal
                 playOrDraw = true;
                 c = this->playerCards.at(cardToPlay);
-                this->playerCards.erase(this->playerCards.begin() + cardToPlay);//might want to +1 or -1, need to confirm
-                this->getPlayerCard().erase(this->getPlayerCard().begin() + cardToPlay);
+                //this->playerCards.erase(this->playerCards.begin() + cardToPlay);//might want to +1 or -1, need to confirm
+                //this->getPlayerCard().erase(this->getPlayerCard().begin() + cardToPlay);
                 endFlag = true;
             }
             else{//move is illegal
