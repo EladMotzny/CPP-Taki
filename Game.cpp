@@ -42,7 +42,7 @@ void Game::start(){
     this->playersDeque.push_back(this->currentPlayer);
 
     bool winner = false;
-    cout << this->clockWise << " :" << this->currentPlayer.getName() << " " << this->playersDeque.size();
+    cout << this->clockWise << " :" << this->currentPlayer.getName() << " " << this->playersDeque.size();// might want to change here
     
 
     while(true){
@@ -50,7 +50,7 @@ void Game::start(){
         gamePrintForPlayer();
         
         //need to check validity of user pick
-        cin >> cardIndex; //here just to stall the infinite loop
+        //cin >> cardIndex; //here just to stall the infinite loop
         // this->currentCard = this->currentPlayer.getPlayerCard()[cardIndex];
         if(this->currentPlayer.play(this->currentCard)){
             if(this->winner()){
