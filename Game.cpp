@@ -12,7 +12,7 @@ Game::Game(vector<string> nameArray, int numberOfCards, Card currentCard, Player
     for (int i=0; i<nameArray.size(); i++) {
         Player* p = new Player(nameArray[i], numberOfCards);
         this->playersDeque.push_back(*p);
-        cout << "size: " << this->playersDeque.size() << endl;
+        // cout << "size: " << this->playersDeque.size() << endl;
     }
     this->currentCard = currentCard;
     this->currentPlayer =  currentPlayer;
@@ -42,7 +42,7 @@ void Game::start(){
     this->playersDeque.push_back(this->currentPlayer);
 
     bool winner = false;
-    cout << this->clockWise << " :" << this->currentPlayer.getName() << " " << this->playersDeque.size();
+    // cout << this->clockWise << " :" << this->currentPlayer.getName() << " " << this->playersDeque.size();
     
 
     while(true){
@@ -88,7 +88,7 @@ bool Game::winner(){
     deque<Player> :: iterator it = this->playersDeque.begin();
     // it->toString();
     for (; it != this->playersDeque.end(); it++){
-        cout  << "winnerloop " << endl; //it->getName();
+        // cout  << "winnerloop " << endl; //it->getName();
         if(it->getPlayerCard().size() == 0)
             return true;
     }
