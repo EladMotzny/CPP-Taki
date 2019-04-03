@@ -52,7 +52,7 @@ void Game::start(){
         //need to check validity of user pick
         cin >> cardIndex; //here just to stall the infinite loop
         // this->currentCard = this->currentPlayer.getPlayerCard()[cardIndex];
-        if(this->currentPlayer.play(this->currentCard)){
+        if(this->playersDeque.front().play(this->currentCard)){
             if(this->winner()){
                 cout << this->currentPlayer.getName() << "  wins!" << endl;
                 return;
