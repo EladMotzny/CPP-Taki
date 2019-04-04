@@ -8,10 +8,10 @@ using namespace std;
 class Game {
 private:
 	//private members and functions
-	deque <Player> playersDeque;
+	deque <Player*> playersDeque;
 	int numberOfCards;
 	Card currentCard;
-	Player currentPlayer;
+	Player* currentPlayer;
 	bool clockWise = true;
 
 	Game& operator=(const Game& game){
@@ -34,14 +34,13 @@ private:
 public:
 	//public members and functions
 	Game(){
-		Player p;
-		deque <Player> pd;
+		deque <Player*> pd;
 		this->playersDeque = pd;
 		this->numberOfCards = 0;
 		this->currentCard = Card::generate_card();
-		this->currentPlayer = p;
+		this->currentPlayer = NULL;
 	}
-	Game(vector<string> nameArray, int numberOfCards, Card currentCard, Player currentPlayer);
+	Game(vector<string> nameArray, int numberOfCards, Card currentCard, Player* currentPlayer);
 	void start();
 	bool winner();
 	void gamePrintForPlayer();

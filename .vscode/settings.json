@@ -3,6 +3,8 @@
         "array": "cpp",
         "initializer_list": "cpp",
         "utility": "cpp",
-        "cstdio": "cpp"
+        "cstdio": "cpp",
+        "deque": "cpp",
+        "vector": "cpp"
     }
 }

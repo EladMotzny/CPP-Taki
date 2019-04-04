@@ -24,6 +24,7 @@ bool play(Card& c);//the play function, true if put a card and false if took a c
 string getName();
 int getNumCards();
 vector<Card> getPlayerCard();
+Card drawCard(Card c);
 void toString(){
 	cout << "name: " << this->name << endl;
 }

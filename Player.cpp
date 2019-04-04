@@ -10,7 +10,7 @@ Player::Player(){//empty constructor
 Player::Player(string name, int numOfCards){//regular constructor
     this->name = name;
     this->num_cards = numOfCards;
-    for(int i = 0; i <= numOfCards; i++){
+    for(int i = 1; i <= numOfCards; i++){
         this->playerCards.push_back(Card::generate_card());
     }
 }
@@ -31,11 +31,16 @@ bool Player::play(Card& c){//The play function
     bool playOrDraw = false;//false if the player drew a card and true if he played a card
     while(!endFlag){
         cin >> cardToPlay;
+        cardToPlay--;
         //check if card is in range
-        if(0 == cardToPlay || cardToPlay > this->getPlayerCard().size()){
+        if(-1 == cardToPlay || cardToPlay >= this->getPlayerCard().size()){
             Card ca = Card::generate_card();
             //this->playerCards.push_back(ca);//draw a card
-            this->getPlayerCard().push_back(ca);
+            // this->getPlayerCard().push_back(ca);
+
+            Card newDrawnCard = Card::generate_card();
+            this->drawCard(newDrawnCard);
+
             endFlag = true;
             playOrDraw = false;
         }
@@ -44,6 +49,8 @@ bool Player::play(Card& c){//The play function
             if(c.is_legal(this->playerCards.at(cardToPlay))){//move is legal
                 playOrDraw = true;
                 c = this->playerCards.at(cardToPlay);
+                
+
                 //this->playerCards.erase(this->playerCards.begin() + cardToPlay);//might want to +1 or -1, need to confirm
                 //this->getPlayerCard().erase(this->getPlayerCard().begin() + cardToPlay);
                 endFlag = true;
@@ -66,4 +73,8 @@ int Player::getNumCards(){
 
 vector<Card> Player::getPlayerCard(){
     return this->playerCards;
+}
+
+Card Player::drawCard(Card c){
+    this->playerCards.push_back(c);
 }
