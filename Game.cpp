@@ -14,7 +14,7 @@ class gameExeption: public exception{
     }
 } gameEx;
 
-Game::Game(vector<string> nameArray, int numberOfCards, Card currentCard, Player* currentPlayer)
+Game::Game(const vector<string> nameArray, int numberOfCards, Card currentCard, Player* currentPlayer)
 {
     for (int i = 0; i < nameArray.size(); i++)
     {
@@ -40,6 +40,9 @@ void Game::start()
     cout << "How many cards?" << endl;
     cin >> this->numberOfCards;
 
+    if(numberOfCards < 0)
+        throw  gameEx;
+
     for (int i = 0; i < numberOfPlayers; i++)
     {
         string currentName;
@@ -47,15 +50,11 @@ void Game::start()
         cin >> currentName;
         Player *p = new Player(currentName, numberOfCards);
         this->playersDeque.push_back(p);
-        // cout << "size: " << this->playersDeque.size() << endl;
     }
     this->currentCard = Card::generate_card();
     this->currentPlayer = this->playersDeque.front();
-    // this->playersDeque.pop_front();
-    // this->playersDeque.push_back(this->currentPlayer);
 
     bool winner = false;
-    // cout << this->clockWise << " :" << this->currentPlayer.getName() << " " << this->playersDeque.size();// might want to change here
 
     while (true)
     {
