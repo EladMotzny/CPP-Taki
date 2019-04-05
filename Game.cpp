@@ -67,6 +67,7 @@ void Game::start()
             if (this->winner())
             {
                 cout << this->currentPlayer->getName() << "  wins!" << endl;
+                this->currentPlayer = NULL;
                 return;
             }
 
