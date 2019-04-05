@@ -1,6 +1,10 @@
+/* Elad Motzny 204093694 */
+/* Alex Fishman 319451514 */
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Card.h"
+#include <string>
+#include <vector>
 using namespace std;
 
 class Player {

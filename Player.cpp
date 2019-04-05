@@ -1,4 +1,8 @@
+/* Elad Motzny 204093694 */
+/* Alex Fishman 319451514 */
 #include "Player.h"
+#include <string>
+#include <vector>
 
 Player::Player(){//empty constructor
     vector <Card> pc;
