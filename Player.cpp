@@ -72,7 +72,7 @@ vector<Card> Player::getPlayerCard(){
 void Player::drawCard(Card c){
     this->playerCards.push_back(c);
 }
-
+//just to add the function because i have no idea why it didnt do it in the first place
 void Player::playCard(int c){
     this->playerCards.erase(this->playerCards.begin() + c);
 }
