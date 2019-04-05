@@ -72,12 +72,6 @@ void Game::start()
         //need to check validity of user pick
         if (this->currentPlayer->play(this->currentCard))
         {
-            if (this->winner())
-            {
-                cout << this->currentPlayer->getName() << "  wins!" << endl;
-                return;
-            }
-
             if (this->currentCard.get_sign() == sign::PLUS)
             {
                 //Player gets the WHOLE "his turn again" shanbang in recursion
@@ -114,7 +108,13 @@ void Game::start()
             this->currentPlayer = this->playersDeque.back();
             this->playersDeque.pop_back();
             this->playersDeque.push_front(this->currentPlayer);
-        }   
+        } 
+
+        if (this->winner())
+            {
+                cout << this->currentPlayer->getName() << " wins!" << endl;
+                return;
+            }  
     }
 }
 
@@ -132,13 +132,9 @@ void Game::gamePrintForPlayer()
 
 bool Game::winner()
 {
-    // cout << "started winner" << endl;
     deque<Player*>::iterator it = this->playersDeque.begin();
-    // it->toString();
     for (; it != this->playersDeque.end(); it++)
     {
-        
-        // cout  << "winnerloop " << endl; //it->getName();
         if ((*it)->getPlayerCard().size() == 0)
             return true;
     }
@@ -150,12 +146,6 @@ void Game::plusCardMove()
     gamePrintForPlayer();
     if (this->currentPlayer->play(this->currentCard))
     {
-        if (this->winner())
-        {
-            cout << this->currentPlayer->getName() << "  wins!" << endl;
-            return;
-        }
-
         if (this->currentCard.get_sign() == sign::PLUS)
         {
             this->plusCardMove();
@@ -181,6 +171,7 @@ void Game::plusCardMove()
             clockWise = !clockWise;
         }
     }
+
 }
 
 Game::~Game(){
