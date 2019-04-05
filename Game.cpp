@@ -1,3 +1,6 @@
+/* Elad Motzny 204093694 */
+/* Alex Fishman 319451514 */
+
 #include "Game.h"
 #include "Card.h"
 #include <iostream>
@@ -13,6 +16,8 @@ class gameExeption: public exception{
         return "You entered negative number! Game Over...";
     }
 } gameEx;
+
+bool clockWise = true;
 
 Game::Game(const vector<string> nameArray,const int numberOfCards,const Card currentCard, Player* currentPlayer)
 {
@@ -55,7 +60,7 @@ void Game::start()
     this->currentPlayer = this->playersDeque.front();
 
     bool winner = false;
-
+    //bool clockWise = true;
     while (true)
     {
         int cardIndex;
@@ -84,23 +89,29 @@ void Game::start()
                     this->currentPlayer = this->playersDeque.front();
                 }
                 else{//if counter clockwise
-
+                    this->currentPlayer = this->playersDeque.back();
+                    this->playersDeque.pop_back();
+                    this->playersDeque.push_front(this->currentPlayer);
                 }
                 
             }
 
             if(this->currentCard.get_sign() == sign::CD){
                 //true - clock-wise, false - counter clock-wise
-                //use pop_back()
                 clockWise = !clockWise;//changes from true to false
             }
-            //idea: make a flag: true-> regular false-> backwards. if flag is false, do the opposite of what we're doing now untill CD is played again
-            //inside the function above simply change the flag and make an if,else statements below
         }
-        
-        this->playersDeque.pop_front();
-        this->playersDeque.push_back(this->currentPlayer);
-        this->currentPlayer = this->playersDeque.front();
+            
+        if(clockWise){//clockwise
+            this->playersDeque.pop_front();
+            this->playersDeque.push_back(this->currentPlayer);
+            this->currentPlayer = this->playersDeque.front();
+        }
+        else{//counter clockwise
+            this->currentPlayer = this->playersDeque.back();
+            this->playersDeque.pop_back();
+            this->playersDeque.push_front(this->currentPlayer);
+        }   
     }
 }
 
@@ -148,6 +159,17 @@ void Game::plusCardMove()
 
         if (this->currentCard.get_sign() == sign::STOP)
         {
+            //move to the player after the next
+            if(clockWise){//if clockwise
+                this->playersDeque.pop_front();
+                this->playersDeque.push_back(this->currentPlayer);
+                this->currentPlayer = this->playersDeque.front();
+            }
+            else{//if counter clockwise
+                this->currentPlayer = this->playersDeque.back();
+                this->playersDeque.pop_back();
+                this->playersDeque.push_front(this->currentPlayer);
+            }
         }
 
         if (this->currentCard.get_sign() == sign::CD)
