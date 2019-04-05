@@ -55,7 +55,7 @@ void Game::start()
     for (int i = 0; i < numberOfPlayers; i++)
     {
         string currentName;
-        cout << "Player number " << (i+1) << " name?" << endl;
+        cout << "player number " << (i+1) << " name?" << endl;
         cin >> currentName;
         Player *p = new Player(currentName, numberOfCards);
         this->playersDeque.push_back(p);
@@ -104,7 +104,7 @@ void Game::start()
                 cout << this->currentPlayer->getName() << " wins!" << endl;
                 return;
             } 
-                 
+
         if(clockWise){//clockwise
             this->playersDeque.pop_front();
             this->playersDeque.push_back(this->currentPlayer);
@@ -122,7 +122,7 @@ void Game::start()
 
 void Game::gamePrintForPlayer()
 {
-    cout << "Current: " << this->currentCard << endl;
+    cout << "current: " << this->currentCard << endl;
     cout << this->currentPlayer->getName() << ", your turn -" << endl;
     cout << "Your cards: ";
     for (int i = 0; i < this->currentPlayer->getPlayerCard().size(); i++)
