@@ -7,7 +7,7 @@ Player::Player(){//empty constructor
     this->playerCards = pc;
 }
 
-Player::Player(string name, int numOfCards){//regular constructor
+Player::Player(const string name,const int numOfCards){//regular constructor
     this->name = name;
     this->num_cards = numOfCards;
     for(int i = 1; i <= numOfCards; i++){
@@ -67,10 +67,10 @@ vector<Card> Player::getPlayerCard(){
     return this->playerCards;
 }
 
-void Player::drawCard(Card c){
+void Player::drawCard(const Card c){
     this->playerCards.push_back(c);
 }
 //just to add the function because i have no idea why it didnt do it in the first place
-void Player::playCard(int c){
+void Player::playCard(const int c){
     this->playerCards.erase(this->playerCards.begin() + c);
 }

@@ -16,7 +16,7 @@ private:
 public:
 
 Player();//empty constructor
-Player(string name, int numOfCards);//regular constractor
+Player(const string name,const int numOfCards);//regular constractor
 Player(const Player& pl);//copy constractor
 ~Player();//destructor
 Player& operator=(const Player& p){name = p.name; num_cards = p.num_cards; playerCards = p.playerCards; return *this;};
@@ -24,8 +24,8 @@ bool play(Card& c);//the play function, true if put a card and false if took a c
 string getName();
 int getNumCards();
 vector<Card> getPlayerCard();
-void drawCard(Card c);
-void playCard(int c);//plays a card
+void drawCard(const Card c);
+void playCard(const int c);//plays a card
 void toString(){
 	cout << "name: " << this->name << endl;
 }

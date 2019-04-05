@@ -40,7 +40,7 @@ public:
 		this->currentCard = Card::generate_card();
 		this->currentPlayer = NULL;
 	}
-	Game(vector<string> nameArray, int numberOfCards, Card currentCard, Player* currentPlayer);
+	Game(const vector<string> nameArray,const int numberOfCards,const Card currentCard, Player* currentPlayer);
 	void start();
 	bool winner();
 	void gamePrintForPlayer();
