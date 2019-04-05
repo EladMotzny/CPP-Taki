@@ -13,7 +13,6 @@ private:
 	Card currentCard;
 	Player* currentPlayer;
 	bool clockWise = true;
-
 	Game& operator=(const Game& game){
 		this->numberOfCards = game.numberOfCards;
 		this->currentCard = game.currentCard;
@@ -45,6 +44,7 @@ public:
 	bool winner();
 	void gamePrintForPlayer();
 	void plusCardMove();
+	~Game();
 	
 	
 };

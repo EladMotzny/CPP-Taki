@@ -67,7 +67,6 @@ void Game::start()
             if (this->winner())
             {
                 cout << this->currentPlayer->getName() << "  wins!" << endl;
-                this->currentPlayer = NULL;
                 return;
             }
 
@@ -147,3 +146,12 @@ void Game::plusCardMove()
     }
 }
 
+Game::~Game(){
+    int size = this->playersDeque.size();
+    for(int i=0; i<size;  i++){
+        Player* p = this->playersDeque.front();
+        this->playersDeque.pop_front();
+        delete p;
+    }
+    this->currentPlayer = NULL;
+}

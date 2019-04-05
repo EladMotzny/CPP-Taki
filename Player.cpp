@@ -23,7 +23,9 @@ Player::Player(const Player& pl){// copy constructor
 
 }
 
-// Player::~Player(){};//destructor
+Player::~Player(){
+    
+};//destructor
 
 bool Player::play(Card& c){//The play function
     int cardToPlay;
