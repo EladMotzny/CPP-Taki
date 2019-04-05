@@ -8,6 +8,12 @@
 
 using namespace std;
 
+class gameExeption: public exception{
+    virtual const char* what() const throw(){
+        return "You entered negative number! Game Over...";
+    }
+} gameEx;
+
 Game::Game(vector<string> nameArray, int numberOfCards, Card currentCard, Player* currentPlayer)
 {
     for (int i = 0; i < nameArray.size(); i++)
@@ -29,7 +35,7 @@ void Game::start()
     cin >> numberOfPlayers;
 
     if(numberOfPlayers < 0)
-        throw  ;
+        throw  gameEx;
 
     cout << "How many cards?" << endl;
     cin >> this->numberOfCards;
@@ -141,8 +147,3 @@ void Game::plusCardMove()
     }
 }
 
-// class gameExeption: public exception{
-//     virtual const char* what() const throw{
-//         return "You entered negative number! Game Over...";
-//     }
-// }gameExeption;
