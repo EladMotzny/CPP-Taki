@@ -43,6 +43,10 @@ void Game::start()
     if(numberOfCards < 0)
         throw  gameEx;
 
+    if(numberOfCards == 0 || numberOfPlayers == 0){
+        return;
+    }
+
     for (int i = 0; i < numberOfPlayers; i++)
     {
         string currentName;
@@ -123,6 +127,7 @@ bool Game::winner()
 
 void Game::plusCardMove()
 {
+    gamePrintForPlayer();
     if (this->currentPlayer->play(this->currentCard))
     {
         if (this->winner())

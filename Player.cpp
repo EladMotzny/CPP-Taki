@@ -10,7 +10,7 @@ Player::Player(){//empty constructor
 Player::Player(const string name,const int numOfCards){//regular constructor
     this->name = name;
     this->num_cards = numOfCards;
-    for(int i = 1; i <= numOfCards; i++){
+    for(int i = 0; i < numOfCards; i++){ //was 1
         this->playerCards.push_back(Card::generate_card());
     }
 }
