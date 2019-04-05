@@ -64,7 +64,6 @@ void Game::start()
     this->currentPlayer = this->playersDeque.front();
 
     bool winner = false;
-    //bool clockWise = true;
     while (true)
     {
         int cardIndex;

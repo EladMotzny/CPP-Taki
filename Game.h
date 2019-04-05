@@ -15,13 +15,11 @@ private:
 	int numberOfCards;
 	Card currentCard;
 	Player* currentPlayer;
-	//bool clockWise = true;//true - clock-wise, false-counter clock-wise
 
 	Game& operator=(const Game& game){
 		this->numberOfCards = game.numberOfCards;
 		this->currentCard = game.currentCard;
 		this->currentPlayer = game.currentPlayer;
-		//this->clockWise = game.clockWise;
 		this->playersDeque = game.playersDeque;
 		return *this;
 	}
@@ -30,7 +28,6 @@ private:
 		this->numberOfCards = g.numberOfCards;
 		this->currentCard = g.currentCard;
 		this->currentPlayer = g.currentPlayer;
-		//this->clockWise = g.clockWise;
 		this->playersDeque = g.playersDeque;
 	}
 
@@ -40,7 +37,7 @@ public:
 		deque <Player*> pd;
 		this->playersDeque = pd;
 		this->numberOfCards = 0;
-		this->currentCard = Card::generate_card();
+		//this->currentCard = Card::generate_card();
 		this->currentPlayer = NULL;
 	}
 	Game(const vector<string> nameArray,const int numberOfCards,const Card currentCard, Player* currentPlayer);
