@@ -143,6 +143,8 @@ bool Game::winner()
 
 void Game::plusCardMove()
 {
+    if(this->winner()) return;
+        
     gamePrintForPlayer();
     if (this->currentPlayer->play(this->currentCard))
     {
