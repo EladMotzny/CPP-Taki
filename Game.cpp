@@ -4,6 +4,7 @@
 #include <deque>
 #include <vector>
 #include <string>
+#include <exception>
 
 using namespace std;
 
@@ -26,6 +27,9 @@ void Game::start()
 
     cout << "How many players?" << endl;
     cin >> numberOfPlayers;
+
+    if(numberOfPlayers < 0)
+        throw  ;
 
     cout << "How many cards?" << endl;
     cin >> this->numberOfCards;
@@ -133,3 +137,9 @@ void Game::plusCardMove()
         }
     }
 }
+
+// class gameExeption: public exception{
+//     virtual const char* what() const throw{
+//         return "You entered negative number! Game Over...";
+//     }
+// }gameExeption;
