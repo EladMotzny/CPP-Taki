@@ -98,7 +98,13 @@ void Game::start()
                 clockWise = !clockWise;//changes from true to false
             }
         }
-            
+
+        if (this->winner())
+            {
+                cout << this->currentPlayer->getName() << " wins!" << endl;
+                return;
+            } 
+                 
         if(clockWise){//clockwise
             this->playersDeque.pop_front();
             this->playersDeque.push_back(this->currentPlayer);
@@ -110,11 +116,7 @@ void Game::start()
             this->playersDeque.push_front(this->currentPlayer);
         } 
 
-        if (this->winner())
-            {
-                cout << this->currentPlayer->getName() << " wins!" << endl;
-                return;
-            }  
+        
     }
 }
 
