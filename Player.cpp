@@ -54,7 +54,7 @@ bool Player::play(Card& c){//The play function
                 endFlag = true;
             }
             else{//move is illegal
-                cout << "You cant put " << this->playerCards.at(cardToPlay) << " on " << c << endl;
+                cout << "You can't put " << this->playerCards.at(cardToPlay) << " on " << c << endl;
             }
         }
     }
