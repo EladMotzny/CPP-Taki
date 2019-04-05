@@ -12,7 +12,7 @@ private:
 	int numberOfCards;
 	Card currentCard;
 	Player* currentPlayer;
-	bool clockWise = true;
+	bool clockWise = true;//true - clock-wise, false-counter clock-wise
 
 	Game& operator=(const Game& game){
 		this->numberOfCards = game.numberOfCards;
