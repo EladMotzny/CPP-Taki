@@ -71,13 +71,16 @@ void Game::start()
                 this->plusCardMove();
             }
 
-            if (this->currentCard.get_sign() == sign::STOP)
-            {
+            if(this->currentCard.get_sign() == sign::STOP){
+                //move to the player after the next NEED TO TEST
+                this->currentPlayer = this->playersDeque.front();
+                this->playersDeque.pop_front();
+                this->playersDeque.push_back(this->currentPlayer);
             }
 
-            if (this->currentCard.get_sign() == sign::CD)
-            {
-            }
+            if(this->currentCard.get_sign() == sign::CD){}
+            //idea: make a flag: true-> regular false-> backwards. if flag is false, do the opposite of what we're doing now untill CD is played again
+            //inside the function above simply change the flag and make an if,else statements below
         }
         
         this->playersDeque.pop_front();

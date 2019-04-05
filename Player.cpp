@@ -35,9 +35,6 @@ bool Player::play(Card& c){//The play function
         //check if card is in range
         if(-1 == cardToPlay || cardToPlay >= this->getPlayerCard().size()){
             Card ca = Card::generate_card();
-            //this->playerCards.push_back(ca);//draw a card
-            // this->getPlayerCard().push_back(ca);
-
             Card newDrawnCard = Card::generate_card();
             this->drawCard(newDrawnCard);
 
@@ -49,10 +46,7 @@ bool Player::play(Card& c){//The play function
             if(c.is_legal(this->playerCards.at(cardToPlay))){//move is legal
                 playOrDraw = true;
                 c = this->playerCards.at(cardToPlay);
-                
-
-                //this->playerCards.erase(this->playerCards.begin() + cardToPlay);//might want to +1 or -1, need to confirm
-                //this->getPlayerCard().erase(this->getPlayerCard().begin() + cardToPlay);
+                this->playCard(cardToPlay);
                 endFlag = true;
             }
             else{//move is illegal
@@ -75,6 +69,10 @@ vector<Card> Player::getPlayerCard(){
     return this->playerCards;
 }
 
-Card Player::drawCard(Card c){
+void Player::drawCard(Card c){
     this->playerCards.push_back(c);
+}
+
+void Player::playCard(int c){
+    this->playerCards.erase(this->playerCards.begin() + c);
 }
