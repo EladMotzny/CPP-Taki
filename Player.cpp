@@ -56,6 +56,7 @@ bool Player::play(Card& c){//The play function
             else{//move is illegal
                 cout << "You can't put " << this->playerCards.at(cardToPlay) << " on " << c << endl;
             }
+            
         }
     }
     return playOrDraw;

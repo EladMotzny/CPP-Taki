@@ -19,6 +19,7 @@ private:
 
 public:
 
+
 Player();//empty constructor
 Player(const string name,const int numOfCards);//regular constractor
 Player(const Player& pl);//copy constractor

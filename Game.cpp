@@ -90,7 +90,6 @@ void Game::start()
                     this->playersDeque.pop_back();
                     this->playersDeque.push_front(this->currentPlayer);
                 }
-                
             }
 
             if(this->currentCard.get_sign() == sign::CD){
